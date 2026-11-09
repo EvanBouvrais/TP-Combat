@@ -1,0 +1,2 @@
+ALTER TABLE heroes
+ADD COLUMN monsters_survived INT UNSIGNED NOT NULL DEFAULT 0;

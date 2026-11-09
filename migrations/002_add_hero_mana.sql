@@ -1,0 +1,2 @@
+ALTER TABLE heroes
+ADD COLUMN mana_point INT NOT NULL DEFAULT 30;

@@ -1,0 +1,2 @@
+ALTER TABLE heroes
+ADD COLUMN class_name VARCHAR(20) NOT NULL DEFAULT 'hero';
