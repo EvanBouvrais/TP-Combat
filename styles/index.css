@@ -1,0 +1,505 @@
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    box-sizing: border-box;
+    display: flex;
+    height: 100vh;
+    height: 100dvh;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0;
+    background-image: url("../images/Backgrounds/index-bg.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+main {
+    min-height: 0;
+    flex: 0 1 auto;
+    overflow-y: auto;
+}
+
+.character-creation {
+    box-sizing: border-box;
+    position: relative;
+    width: min(100% - 2rem, 72rem);
+    margin: clamp(0.5rem, 2vh, 1.25rem) auto 0.75rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    color: #fff;
+    background: rgb(15 18 28 / 86%);
+    border: 1px solid rgb(255 255 255 / 28%);
+    border-radius: 1rem;
+    box-shadow: 0 1.25rem 3rem rgb(0 0 0 / 40%);
+    backdrop-filter: blur(8px);
+}
+
+.character-creation h1 {
+    margin: 0;
+    padding-right: 6rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.character-creation > p {
+    margin: 0.25rem 0 1rem;
+    padding-right: 6rem;
+    color: rgb(255 255 255 / 75%);
+}
+
+.character-creation form {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+    align-items: end;
+    gap: 1rem;
+}
+
+.character-creation .form-field {
+    display: grid;
+    gap: 0.4rem;
+    min-width: 0;
+}
+
+.character-creation .form-field label {
+    font-weight: 600;
+}
+
+.character-creation input,
+.character-creation select {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 2.8rem;
+    padding: 0.65rem 0.75rem;
+    color: #fff;
+    font: inherit;
+    background: rgb(255 255 255 / 10%);
+    border: 1px solid rgb(255 255 255 / 35%);
+    border-radius: 0.5rem;
+}
+
+.character-creation input[type="file"] {
+    padding: 0.5rem;
+}
+
+.character-creation select option {
+    color: #17120a;
+    background: #fff;
+}
+
+.image-preview {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    box-sizing: border-box;
+    width: 4.5rem;
+    height: 4.5rem;
+    object-fit: contain;
+    background: rgb(255 255 255 / 10%);
+    border: 1px solid rgb(255 255 255 / 35%);
+    border-radius: 0.5rem;
+}
+
+.image-preview[hidden] {
+    display: none;
+}
+
+.image-preview-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+.character-creation input:focus-visible,
+.character-creation select:focus-visible,
+.character-creation button:focus-visible {
+    outline: 2px solid #ffc857;
+    outline-offset: 2px;
+}
+
+.character-creation button {
+    min-height: 2.9rem;
+    margin: 0;
+    padding: 0.7rem 1rem;
+    color: #17120a;
+    font: inherit;
+    font-weight: 700;
+    background: #ffc857;
+    border: 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.character-creation button:hover {
+    background: #ffd77f;
+    transform: translateY(-1px);
+}
+
+.character-creation [role="alert"] {
+    margin: 0.75rem 0 0;
+    padding: 0.75rem 1rem;
+    color: #ffd6d6;
+    background: rgb(150 20 30 / 35%);
+    border: 1px solid rgb(255 120 120 / 55%);
+    border-radius: 0.5rem;
+}
+
+.game-start-form {
+    display: flex;
+    min-height: 0;
+    flex: 1 1 0;
+    flex-direction: column;
+    overflow-y: auto;
+    margin: 0;
+}
+
+.mode-selection {
+    box-sizing: border-box;
+    width: min(100% - 2rem, 72rem);
+    min-height: 0;
+    flex: 0 1 auto;
+    overflow-y: auto;
+    margin: 0 auto 0.75rem;
+    padding: 1.25rem 2.25rem;
+    color: #fff;
+    background: rgb(15 18 28 / 86%);
+    border: 1px solid rgb(255 255 255 / 28%);
+    border-radius: 1rem;
+    box-shadow: 0 1.25rem 3rem rgb(0 0 0 / 40%);
+    backdrop-filter: blur(8px);
+}
+
+.mode-selection h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+}
+
+.mode-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.mode-card {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.mode-card input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.mode-card-content {
+    display: grid;
+    min-height: 4.5rem;
+    align-content: center;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem;
+    background: rgb(255 255 255 / 8%);
+    border: 1px solid rgb(255 255 255 / 28%);
+    border-radius: 0.65rem;
+    transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.mode-card-content strong {
+    color: #fff;
+}
+
+.mode-card-content span {
+    color: rgb(255 255 255 / 75%);
+    font-size: 0.9rem;
+}
+
+.mode-card input:checked + .mode-card-content {
+    background: rgb(255 200 87 / 18%);
+    border-color: #ffc857;
+}
+
+.mode-card input:focus-visible + .mode-card-content {
+    outline: 2px solid #ffc857;
+    outline-offset: 2px;
+}
+
+.training-opponent-field {
+    display: grid;
+    grid-template-columns: auto minmax(12rem, 20rem);
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.training-opponent-field[hidden] {
+    display: none;
+}
+
+.training-opponent-field select {
+    box-sizing: border-box;
+    min-height: 2.6rem;
+    padding: 0.5rem 0.75rem;
+    color: #fff;
+    font: inherit;
+    background: rgb(255 255 255 / 10%);
+    border: 1px solid rgb(255 255 255 / 35%);
+    border-radius: 0.5rem;
+}
+
+.training-opponent-field option {
+    color: #17120a;
+    background: #fff;
+}
+
+.hero-selection {
+    box-sizing: border-box;
+    width: min(100% - 2rem, 72rem);
+    min-height: 14.5rem;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0 auto 0.75rem;
+    padding: 1.25rem 2.25rem;
+    color: #fff;
+    background: rgb(15 18 28 / 86%);
+    border: 1px solid rgb(255 255 255 / 28%);
+    border-radius: 2.5rem;
+    box-shadow: 0 1.25rem 3rem rgb(0 0 0 / 40%);
+    backdrop-filter: blur(8px);
+}
+
+.hero-selection h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+}
+
+.hero-card-grid {
+    display: flex;
+    min-height: 0;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 1.5rem 2.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 0.5rem;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hero-card-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.hero-card {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    width: 8.25rem;
+    flex: 0 0 8.25rem;
+    min-height: 11.5rem;
+    padding: 1.25rem 0.85rem 0.9rem;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    background: #00191d;
+    border: 2px solid #000;
+    border-radius: 1.4rem;
+    transition: transform 150ms ease, border-color 150ms ease, background-color 150ms ease;
+}
+
+.hero-card:hover,
+.hero-card:focus-within {
+    transform: translateY(-3px);
+    border-color: #ffc857;
+    background: #00262b;
+}
+
+.hero-card-image,
+.hero-card-placeholder {
+    display: grid;
+    width: 4.75rem;
+    height: 4.75rem;
+    flex: 0 0 4.75rem;
+    place-items: center;
+    object-fit: cover;
+    background: #071719;
+}
+
+.hero-card-placeholder {
+    color: #ffc857;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.hero-card-content {
+    display: grid;
+    width: 100%;
+    gap: 0.28rem;
+    padding-top: 0.35rem;
+}
+
+.hero-card-content h3 {
+    overflow: hidden;
+    margin: 0;
+    font-size: 0.95rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hero-card-class {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+
+
+.hero-card-stat {
+    margin: 0;
+    color: rgb(255 255 255 / 78%);
+    font-size: 0.8rem;
+}
+
+.hero-card-select {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    border-radius: inherit;
+}
+
+.hero-card-select:focus-visible {
+    outline: 3px solid #ffc857;
+    outline-offset: -4px;
+}
+
+.hero-selection-empty {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    color: #fff;
+    background: rgb(15 18 28 / 82%);
+    border: 1px solid rgb(255 255 255 / 28%);
+    border-radius: 0.75rem;
+}
+
+@media (max-width: 700px) {
+    .mode-selection {
+        padding: 1rem;
+    }
+
+    .mode-card-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .training-opponent-field {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.4rem;
+    }
+
+    .hero-selection {
+        padding: 1rem;
+        border-radius: 1.5rem;
+    }
+
+    .hero-card-grid {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .character-creation h1,
+    .character-creation > p {
+        padding-right: 4.5rem;
+    }
+
+    .image-preview {
+        right: 1.25rem;
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .character-creation form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .character-creation .image-field {
+        grid-column: 1 / -1;
+    }
+
+    .character-creation button {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 480px) {
+    .character-creation h1,
+    .character-creation > p {
+        padding-right: 3.5rem;
+    }
+
+    .image-preview {
+        right: 1rem;
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+
+    .character-creation form {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .character-creation .image-field,
+    .character-creation button {
+        grid-column: auto;
+    }
+
+}
+
+@media (max-height: 700px) {
+    .character-creation {
+        padding: 0.85rem 1rem;
+    }
+
+    .character-creation > p {
+        margin-bottom: 0.5rem;
+    }
+
+    .mode-selection {
+        padding: 0.75rem 1rem;
+    }
+
+    .mode-selection h2,
+    .hero-selection h2 {
+        margin-bottom: 0.5rem;
+    }
+
+    .mode-card-grid {
+        gap: 0.5rem;
+    }
+
+    .mode-card-content {
+        min-height: 0;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .hero-selection {
+        padding: 0.75rem 1rem;
+    }
+}

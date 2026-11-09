@@ -1,0 +1,45 @@
+.hero-class-hero {
+    color: #b0bec5;
+}
+
+.hero-class-mage {
+    color: #ce93d8;
+}
+
+.hero-class-guerrier {
+    color: #ff8a65;
+}
+
+.hero-class-archer {
+    color: #81c784;
+}
+
+.hero-class-vampire {
+    color: #ef5350;
+}
+
+.hero-class-gambler {
+    color: #ffd54f;
+}
+
+.hero-class-werewolf {
+    color: #90caf9;
+}
+
+.hero-class-flowery {
+    color: #f48fb1;
+    font-weight: 600;
+    background: linear-gradient(
+        90deg,
+        #ff5f6d,
+        #ffc371,
+        #f9f871,
+        #7bed9f,
+        #70d6ff,
+        #b388ff,
+        #ff5f6d
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

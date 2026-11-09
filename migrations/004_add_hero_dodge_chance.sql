@@ -1,0 +1,2 @@
+ALTER TABLE heroes
+ADD COLUMN dodge_chance_basis_points BIGINT UNSIGNED NOT NULL DEFAULT 0;

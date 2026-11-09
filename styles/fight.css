@@ -1,0 +1,434 @@
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    background-image: url("../images/Backgrounds/Dungeon-bricks-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    font-weight: 600;
+}
+
+body.combat-boss {
+    background-image: url("../images/Backgrounds/Boss-bg.jpg");
+}
+
+.health-panel {
+    color: #fff;
+    font-weight: 600;
+}
+
+body.combat-active {
+    padding-bottom: 0;
+}
+
+.survivor-counter {
+    box-sizing: border-box;
+    position: fixed;
+    top: max(1rem, env(safe-area-inset-top));
+    right: max(1rem, env(safe-area-inset-right));
+    z-index: 11;
+    width: min(24rem, calc(100vw - 2rem));
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    background: rgb(0 0 0 / 75%);
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 35%);
+}
+
+.survivor-counter p {
+    margin: 0;
+}
+
+.survivor-counter p + p {
+    margin-top: 0;
+}
+
+.survivor-counter .survivor-count {
+    font-size: 1.1rem;
+}
+
+.combat-workspace {
+    position: fixed;
+    top: clamp(2rem, 12vh, 7rem);
+    right: 1rem;
+    bottom: 144px;
+    left: 1rem;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0.75rem;
+    overflow: hidden;
+}
+
+.combat-log {
+    box-sizing: border-box;
+    width: auto;
+    flex: 1 1 0;
+    min-height: 0;
+    min-width: 0;
+    margin: 0;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #fff;
+    background: rgb(0 0 0 / 75%);
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 35%);
+}
+
+.combat-log h2 {
+    margin: 0 0 0.75rem;
+}
+
+.combat-log-entries {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.combat-log-entries p {
+    margin: 0;
+    padding: 0.4rem 0;
+}
+
+.combat-log-entries p + p {
+    border-top: 1px solid rgb(255 255 255 / 20%);
+}
+
+.monster-name {
+    color: #b0bec5;
+    font-weight: 600;
+}
+
+
+
+.combat-actions {
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 11;
+    width: min(24rem, calc(100vw - 2rem));
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0.75rem;
+    overflow: visible;
+    background: rgb(0 0 0 / 55%);
+    border: 1px solid rgb(255 255 255 / 30%);
+    border-radius: 0.5rem;
+}
+
+.combat-actions form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.action-button-wrapper {
+    width: 100%;
+}
+
+.combat-actions button {
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 0.5rem 0.65rem;
+    color: #fff;
+    font: inherit;
+    white-space: normal;
+    background: rgb(255 255 255 / 12%);
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 0.35rem;
+    cursor: pointer;
+}
+
+.combat-actions button.forfeit-button {
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+}
+
+.combat-actions button:hover:not(:disabled) {
+    background: rgb(255 255 255 / 24%);
+}
+
+.combat-actions button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.combat-actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.combat-actions p {
+    width: 100%;
+    margin: 0;
+    text-align: left;
+}
+
+.active-rogue-cards {
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 11;
+    width: min(24rem, calc(100vw - 2rem));
+    overflow-y: auto;
+    padding: 0.65rem;
+    background: rgb(0 0 0 / 45%);
+    border: 1px solid rgb(255 255 255 / 28%);
+    border-radius: 0.35rem;
+}
+
+.active-rogue-cards h2 {
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+}
+
+.active-rogue-cards ul {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.active-rogue-cards li {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.3rem 0.4rem;
+    color: #f4e4bc;
+    background: rgb(255 255 255 / 8%);
+    border-radius: 0.3rem;
+    font-size: 0.85rem;
+}
+
+.active-rogue-cards img {
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 2rem;
+    object-fit: contain;
+    border-radius: 0.2rem;
+}
+
+.active-rogue-cards li span {
+    overflow-wrap: anywhere;
+}
+
+.action-info-panel {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    color: #fff;
+    background: rgb(0 0 0 / 80%);
+    border: 1px solid rgb(255 255 255 / 35%);
+    border-radius: 0.35rem;
+}
+
+.action-info-panel[hidden] {
+    display: none;
+}
+
+.action-info-panel h2 {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+}
+
+.action-info-panel p {
+    line-height: 1.4;
+}
+
+.health-panel {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 1rem max(1rem, env(safe-area-inset-right)) calc(1rem + env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+    background-image: url("../images/Backgrounds/dungeon-brick-footer.jpg");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: auto;
+    border-top: 1px solid #ccc;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -2px 8px rgb(0 0 0 / 15%);
+}
+
+.health-panel progress {
+    display: block;
+    width: 100%;
+    height: 1.25rem;
+    appearance: none;
+    border: 0;
+    border-radius: 999px;
+    background: #e5e5e5;
+}
+
+.health-panel .health-resource progress::-webkit-progress-bar {
+    border-radius: 999px;
+    background: #e5e5e5;
+}
+
+.health-panel .health-resource progress::-webkit-progress-value {
+    border-radius: 999px;
+    background: #d32f2f;
+}
+
+.health-panel .health-resource progress::-moz-progress-bar {
+    border-radius: 999px;
+    background: #d32f2f;
+}
+
+.health-panel .mana {
+    min-width: 0;
+}
+
+.health-panel .mana progress::-webkit-progress-bar {
+    border-radius: 999px;
+    background: #e5e5e5;
+}
+
+.health-panel .mana progress::-webkit-progress-value {
+    border-radius: 999px;
+    background: #3478d4;
+}
+
+.health-panel .mana progress::-moz-progress-bar {
+    border-radius: 999px;
+    background: #3478d4;
+}
+
+.health-panel .health-resource progress {
+    accent-color: #d32f2f;
+}
+
+.health-panel .mana progress {
+    accent-color: #3478d4;
+    width: 100%;
+}
+
+.hero-health {
+    display: flex;
+    align-items: stretch;
+    gap: 0.75rem;
+}
+
+.hero-portrait {
+    width: 96px;
+    height: 96px;
+    flex: 0 0 96px;
+    object-fit: cover;
+}
+
+.monster-portrait {
+    width: 96px;
+    height: 96px;
+    flex: 0 0 96px;
+    object-fit: cover;
+}
+
+.hero-health-info {
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    flex: 1;
+    height: 96px;
+    min-width: 0;
+}
+
+.health-resource {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.monster-health {
+    display: flex;
+    align-items: stretch;
+    gap: 0.75rem;
+}
+
+.monster-health-info {
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    flex: 1;
+    height: 96px;
+    min-width: 0;
+}
+
+@media (max-width: 480px) {
+    body.combat-active {
+        padding-bottom: 130px;
+    }
+
+    .health-panel {
+        gap: 0.75rem;
+        padding: 0.75rem max(0.75rem, env(safe-area-inset-right)) calc(0.75rem + env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
+    }
+
+    .hero-health {
+        gap: 0.5rem;
+    }
+
+    .hero-portrait {
+        width: 64px;
+        height: 64px;
+        flex-basis: 64px;
+    }
+
+    .monster-portrait {
+        width: 64px;
+        height: 64px;
+        flex-basis: 64px;
+    }
+
+    .hero-health-info,
+    .monster-health-info {
+        height: 64px;
+    }
+
+    .monster-health {
+        gap: 0.5rem;
+    }
+
+    .combat-workspace {
+        bottom: 128px;
+        gap: 0.5rem;
+        right: 1rem;
+    }
+
+    .combat-log {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 760px) {
+    .combat-workspace {
+        flex-direction: column;
+    }
+}
